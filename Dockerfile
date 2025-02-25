@@ -15,11 +15,11 @@ COPY vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5 /root/.keras/models
 COPY keras.json /root/.keras
 
 # 将 Flask API 的 Python 文件（flash-api.py）拷贝到容器中
-COPY flash-api.py /app/
+COPY flask-api.py /app/
 
 # 暴露 Flask 默认端口
 EXPOSE 5000
 
 # 设置启动命令
-CMD ["python", "flash-api.py"]
+CMD ["python", "flask-api.py"]
 
