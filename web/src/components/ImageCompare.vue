@@ -16,8 +16,7 @@
           :limit="1"
         >
           <i class="el-icon-upload"></i>
-          <div class="el-upload__text">拖拽至此或<em>点击上传</em>左图</div>
-          <div class="el-upload__tip" slot="tip">只能上传jpg/png文件</div>
+          <div class="el-upload__text">拖拽至此或<em>点击上传</em>左图,只能上传jpg/png文件</div>
         </el-upload>
         <div class="preview" v-if="leftImage">
           <img :src="leftImage" alt="Left Image">
@@ -37,8 +36,7 @@
           :limit="1"
         >
           <i class="el-icon-upload"></i>
-          <div class="el-upload__text">拖拽至此或<em>点击上传</em>右图</div>
-          <div class="el-upload__tip" slot="tip">只能上传jpg/png文件</div>
+          <div class="el-upload__text">拖拽至此或<em>点击上传</em>右图,只能上传jpg/png文件</div>
         </el-upload>
         <div class="preview" v-if="rightImage">
           <img :src="rightImage" alt="Right Image">

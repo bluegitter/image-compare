@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS  # 导入CORS
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import Model
@@ -7,7 +7,7 @@ import numpy as np
 import os
 
 # 初始化Flask应用
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./web/dist', static_url_path='')  # 明确指定静态目录
 
 # 启用跨域支持
 CORS(app)  # 启用CORS
@@ -78,6 +78,17 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+# 为静态资源提供服务
+@app.route('/')
+def serve_home():
+    """返回index.html页面"""
+    return send_from_directory(app.static_folder, 'index.html')
+
+# 为静态资源提供访问
+@app.route('/<path:filename>')
+def serve_static(filename):
+    """为静态文件提供访问支持"""
+    return send_from_directory(app.static_folder, filename)
 
 # 启动Flask应用
 if __name__ == '__main__':
